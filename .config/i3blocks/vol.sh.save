@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Aktuelle Lautstärke abrufen (PulseAudio)
+vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | head -n1)
+
+# Klick/Scroll abfangen
+case $BLOCK_BUTTON in
+    1) pactl set-sink-mute @DEFAULT_SINK@ toggle ;; # Linksklick: stumm/laut
+    4) pactl set-sink-volume @DEFAULT_SINK@ +5% ;;   # Scroll hoch: lauter
+    5) pactl set-sink-volume @DEFAULT_SINK@ -5% ;;   # Scroll runter: leiser
+esac
+
+# Ausgabe fürs i3bar
+if pactl get-sink-mute @DEFAULT_SINK@ | grep -q yes; then
+    echo "🔇 Muted"
+else
+    echo "🔊 $vol"
+fi

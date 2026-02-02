@@ -1,0 +1,38 @@
+separator=true
+separator_block_width=30
+markup=plain
+
+[window]
+command=xdotool getactivewindow getwindowname
+interval=1
+
+[USER]
+command=echo $USER@$HOSTNAME
+interval=6
+color=#f9e2af
+
+[volume]
+command=pamixer --get-volume-human
+interval=1
+color=#a6e3a1
+#color=#65ff00
+
+#[USER]
+#command=echo $USER
+#interval=6
+#color=#f9e2af
+
+[time]
+#command=date '+| %H:%M '
+command=date '+%H:%M'
+#command=date '+| %H:%M |'
+interval=1
+color=#89b4fa
+#color=#00FFFF
+
+[power]
+command=/home/random/.config/i3blocks/powermenu.sh
+interval=1
+markup=pango
+color=#f38ba8
+#color=#FF0000

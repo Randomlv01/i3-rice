@@ -3,15 +3,25 @@ general {
         interval = 5
 }
 
+#order += "cpu_usage"
 order += "memory"
+order += "disk /"
 order += "tztime local"
 
+cpu_usage {
+    format = "   %usage "
+}
+
 memory {
-        format = "  %used "
+        format = "   %used "
         threshold_degraded = "1G"
         format_degraded = "MEMORY < %available"
 }
 
+disk "/" {
+    format = " 󰋊 %avail (%percentage_used) "
+}
+
 tztime local {
-        format = " %H:%M "
+        format = " %d.%m %Y - %H:%M "
 }

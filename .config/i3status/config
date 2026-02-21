@@ -3,10 +3,17 @@ general {
         interval = 5
 }
 
+order += "volume master"
 #order += "cpu_usage"
 order += "memory"
 order += "disk /"
 order += "tztime local"
+
+volume master {
+    format = "  %volume "
+    format_muted = "   muted "
+    device = "default"
+}
 
 cpu_usage {
     format = "   %usage "
